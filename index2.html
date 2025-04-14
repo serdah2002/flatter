@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإحصائيات</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+          <h1> إحصائيات كورونا </h1>
+          <input type="text" id="searchInput" placeholder="ابحث عن موضوع...">
+        </header>
+    </div>
+    <br>
+
+    <section class="stats">
+        <h2 style="text-align:center;">إحصائيات الإصابات بفيروس كورونا</h2>
+        <canvas id="covidChart" width="400" height="200"></canvas>
+      </section>
+
+      <section class="stats">
+        <h2 style="text-align:center;">عدد الحالات الخطيرة لكل سنة</h2>
+        <canvas id="severeCasesChart" width="400" height="200"></canvas>
+      </section>
+      
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('covidChart').getContext('2d');
+
+  const covidChart = new Chart(ctx, {
+    type: 'bar', 
+    data: {
+      labels: ['2019', '2020', '2021', '2022'],
+      datasets: [{
+        label: 'عدد الإصابات بالمليون',
+        data: [0.03, 83, 250, 145], 
+        backgroundColor: ['#007bff', '#3399ff', '#66b3ff', '#99ccff'],
+        borderRadius: 10
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+              return value + 'M';
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+    const ctx2 = document.getElementById('severeCasesChart').getContext('2d');
+  
+    const severeCasesChart = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['2019', '2020', '2021', '2022'],
+        datasets: [{
+          label: 'الحالات الخطيرة بالمليون',
+          data: [0.005, 18, 52, 21], 
+          backgroundColor: ['#ff4d4d', '#ff6666', '#ff8080', '#ff9999'],
+          borderRadius: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function(value) {
+                return value + 'M';
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+  
+      
+<div class="serdah2">
+    <a class="stats-link" href="index.html">
+      <span class="icon">🔙</span> رجوع للصفحة الأساسية
+    </a>
+  </div>
+
+  <div class="link-wrapper">
+    <a class="stats-link" href="index3.html">هل ما زالت كورونا إلى الآن موجودة؟</a>
+  </div>
+</body>
+</html>

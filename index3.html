@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هل ما زالت كورونا إلى الآن موجودة؟</title>
+    <link rel="stylesheet" href="style.css" />
+    
+</head>
+<body>
+    <div class="container">
+        
+          <h1>نعم ما زالت كورونا موجودة <h1>
+          </div>
+        
+
+    <section id="info">
+        <div class="card">
+            <h2>الارقم و العواملٍ</h2>
+          <p> فيروس كورونا المستجد (COVID-19) لا يزال موجودًا حتى الآن. وفقًا لمنظمة الصحة العالمية، بلغ العدد التراكمي للحالات المؤكدة عالميًا 775,866,783 حالة حتى 1 أبريل 2025. في أوائل أبريل 2025، شهدت بعض المناطق زيادة طفيفة بنسبة 10% في الحالات الأسبوعية الجديدة مقارنة بشهر مارس، لكن معدلات الوفيات استمرت في الانخفاض بفضل حملات التطعيم وتحسين إدارة الحالات السريرية.</p>
+          <p>بالنسبة لخطورة الفيروس، على الرغم من أن العديد من الأشخاص قد أصيبوا بالعدوى أو تلقوا التطعيم، مما يقلل من شدة المرض بشكل عام، إلا أن الفيروس لا يزال قادرًا على التطور ويشكل تهديدًا مستمرًا. الأشخاص الذين يعانون من أمراض مزمنة أو ضعف في الجهاز المناعي، بالإضافة إلى كبار السن، لا يزالون معرضين لخطر الإصابة بمضاعفات خطيرة.</p>
+          <p>ذلك، من المهم أن يستمر الأفراد، خاصةً الفئات الأكثر عرضة للخطر، في اتخاذ الاحتياطات اللازمة واتباع التوجيهات الصحية للحماية من الإصابة بالفيروس</p>
+        </section>
+        </div>
+
+        <div class="link-wrapper">
+            <a class="stats-link" href="index4.html">كم عدد الضحايا منذ بداية كورونا؟</a>
+          </div>
+
+          <div class="serdah2">
+            <a class="stats-link" href="index.html">
+              <span class="icon">🔙</span> رجوع للصفحة الأساسية
+            </a>
+
+            
+          </div>
+        
+          <div class="abe">
+          <h2 >abe idea</h2>
+             </div>
+          <div id="clock" class="clock"></div>
+          <script>
+            function updateClock() {
+              const now = new Date();
+              const hours = now.getHours().toString().padStart(2, '0');
+              const minutes = now.getMinutes().toString().padStart(2, '0');
+              const seconds = now.getSeconds().toString().padStart(2, '0');
+          
+              const timeString = `${hours}:${minutes}:${seconds}`;
+              document.getElementById('clock').textContent = timeString;
+            }
+          
+             
+            setInterval(updateClock, 1000);
+            updateClock();  
+          </script>
+          
+        
+
+</body>
+</html>

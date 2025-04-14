@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>معلومات عن مرض كورونا</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>مرض كورونا (COVID-19)</h1>
+      <input type="text" id="searchInput" placeholder="ابحث عن موضوع...">
+    </header>
+    <div class="links-container">
+      <div class="link-wrapper">
+        <a class="stats-link" href="index2.html">الإحصائيات للإصابات من 2019 إلى 2022</a>
+      </div>
+      <div class="link-wrapper">
+        <a class="stats-link" href="index3.html">هل ما زالت كورونا إلى الآن موجودة؟</a>
+      </div>
+      <div class="link-wrapper">
+        <a class="stats-link" href="index4.html">كم عدد الضحايا منذ بداية كورونا؟</a>
+      </div>
+    </div>
+    
+
+    <section id="info">
+      <div class="card">
+        <h2>كيف بدأ المرض؟</h2>
+        <p> .يُعتقد أن أول حالة مُسجلة يعود تاريخها إلى 1 ديسمبر من عام 2019 في ووهان، مقاطعة خوبي، الصين. ازدادت خلال الشهر التالي عدد حالات الإصابة بفيروس كورونا في خوبي تدريجيًا</p>
+        <img src="download.jpg" alt="فيروس كورونا">
+      </div>
+      
+      <div class="card">
+        <h2>كيف انتهى؟</h2>
+        <p>مع نهاية فصل الشتاء الذي غالباً ما يحمل في طياته العديد من الأمراض الموسمية، تضاءل الحديث عن الإصابة بفيروس كورونا والذي كان يعتبر هاجساً لدى الكثيرين خصوصا في هذا الفصل وسط تشكيك البعض بمدى خطورته واختلافه عن الانفلونزا.
+
+        مرض كوفيد-19 هو المرض الناجم عن فيروس كورونا المُسمى فيروس كورونا- سارس- 2.
+        
+        وقد اكتشفت منظمة الصحة العالمية هذا الفيروس المُستجد لأول مرة في 31 كانون الأول/ ديسمبر 2019، بعد الإبلاغ عن مجموعة من حالات الإصابة بما يُسمى الالتهاب الرئوي الفيروسي في يوهان بجمهورية الصين الشعبية.
+        
+        البروفيسور وخبير اللقاحات علي فطوم، أكّد لـ "بي بي سي"، أن الفيروس لم ينتهِ وفي الموسم الشتوي، سُجل الكثير من الإصابات، ولكن أصبح التعايش معه أسهل كـ "روتين"، ومع الانخفاض الكبير بعدد الوفيات مقارنة بأول موسمين عند اكتشاف الفيروس أصبح الاهتمام به أقل.ض.</p>
+        <img src="images.jpg" alt="لقاح كورونا">
+      </div>
+
+      <div class="card">
+        <h2>الأسباب</h2>
+        <p>ينتقل فيروس كورونا من شخص لآخر عبر الرذاذ التنفسي، وخاصة في الأماكن المزدحمة أو عند عدم ارتداء الكمامات.</p>
+      </div>
+
+      <div class="card">
+        <h2>الأعراض</h2>
+        <p>حمى، سعال، ضيق تنفس، فقدان حاستي الشم والتذوق، إرهاق عام.</p>
+      </div>
+
+      <div class="serdah">
+        <h2>طرق الحماية</h2>
+        <p>ارتداء الكمامات، غسل اليدين، التباعد الاجتماعي، وأخذ اللقاحات.</p>
+        <img src="WEARING MASKS 1 Arabic version.png.webp"  alt="الكمامة">
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.card');
+
+    searchInput.addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+      cards.forEach(card => {
+        const content = card.textContent.toLowerCase();
+        card.style.display = content.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+  
+  
+  <div class="link-wrapper">
+  <a class="stats-link" href="index2.html">
+    اضغط هنا للانتقال إلى صفحة آخر الإحصائيات من 2019 إلى 2022
+  </a>
+</div>
+
+</body>
+</html>

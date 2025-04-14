@@ -1,0 +1,149 @@
+body {
+    font-family: 'Tahoma', sans-serif;
+    background-color: #e6f0ff;
+    color: #003366;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  header h1 {
+    color: #0066cc;
+  }
+  
+  #searchInput {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 15px;
+  }
+  
+  .card {
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #b3d1ff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+  
+  .card img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.serdah {
+    text-align: center;      
+    padding: 20px;
+  }
+  
+  .serdah img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; 
+    border-radius: 10px;
+  }
+
+  .links-container {
+    display: flex;
+    justify-content: center;  
+    gap: 20px;  
+    flex-wrap: wrap;  
+    margin-top: 30px;
+  }
+  
+  .link-wrapper {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .stats-link {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+  }
+  
+  .stats-link:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+
+
+  .stats {
+    background-color: #ffffff;
+    border: 1px solid #b3d1ff;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+  .serdah2 {
+    position: fixed;       
+    top: 20px;            
+    left: 20px;   
+    margin-bottom: 20px;         
+    z-index: 1000; 
+
+  }
+  
+  .stats-link {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stats-link:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  } 
+
+  .clock {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    background-color: #f0f8ff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    width: fit-content;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    direction: ltr;  
+  }
+
+  .abe {
+    text-align: center;
+  }

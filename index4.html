@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عدد الوفيات </title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      direction: rtl;
+      background: #e6f0ff;
+      padding: 30px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+    }
+
+    h1 {
+      color: #004a99;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #cce0ff;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 15px;
+      border-radius: 8px;
+      margin: 5px 5px 15px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005bb5;
+    }
+
+    .card {
+      background-color: #f7faff;
+      border: 1px solid #cce0ff;
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+
+    canvas {
+      margin-top: 30px;
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+  
+ 
+    const data = [
+      { year: '2019', cases: 0.03, severe: 0.005, deaths: 0 },
+      { year: '2020', cases: 83, severe: 18, deaths: 1.8 },
+      { year: '2021', cases: 250, severe: 52, deaths: 5.2 },
+      { year: '2022', cases: 145, severe: 21, deaths: 3.1 },
+    ];
+  
+    function App() {
+      const [query, setQuery] = useState("");
+      const [lang, setLang] = useState("ar");
+      const chartRef = useRef(null);
+  
+      const filtered = data.filter(item =>
+        item.year.includes(query)
+      );
+  
+      const labels = data.map(d => d.year);
+      const caseData = data.map(d => d.cases);
+  
+    
+      const translations = {
+        ar: {
+          title: "📊 إحصائيات كورونا",
+          search: "ابحث بالسنة مثل 2021...",
+          year: "السنة",
+          cases: "عدد الإصابات",
+          severe: "الحالات الخطيرة",
+          deaths: "عدد الوفيات",
+          export: "📤 تصدير إلى PDF",
+          switchLang: "🔄 English",
+          noResult: "لا توجد نتائج.",
+        },
+        en: {
+          title: "📊 COVID-19 Stats",
+          search: "Search by year like 2021...",
+          year: "Year",
+          cases: "Cases",
+          severe: "Severe Cases",
+          deaths: "Deaths",
+          export: "📤 Export to PDF",
+          switchLang: "🔄 العربية",
+          noResult: "No results found.",
+        },
+      };
+  
+      const t = translations[lang];
+  
+      useEffect(() => {
+        const ctx = document.getElementById('myChart').getContext('2d');
+        if (chartRef.current) chartRef.current.destroy();
+  
+        chartRef.current = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels,
+            datasets: [{
+              label: lang === "ar" ? 'عدد الإصابات (بالمليون)' : 'Cases (Million)',
+              data: caseData,
+              backgroundColor: '#3399ff',
+              borderRadius: 10
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  callback: function (value) {
+                    return value + 'M';
+                  }
+                }
+              }
+            }
+          }
+        });
+      }, [lang]);
+  
+      
+      const exportPDF = () => {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.text(t.title, 10, 10);
+        filtered.forEach((item, i) => {
+          doc.text(`${t.year}: ${item.year}`, 10, 20 + i * 30);
+          doc.text(`${t.cases}: ${item.cases}M`, 10, 28 + i * 30);
+          doc.text(`${t.severe}: ${item.severe}M`, 10, 36 + i * 30);
+          doc.text(`${t.deaths}: ${item.deaths}M`, 10, 44 + i * 30);
+        });
+        doc.save("covid-stats.pdf");
+      };
+  
+      return (
+        <div className="container">
+          <h1>{t.title}</h1>
+          <button onClick={() => setLang(lang === "ar" ? "en" : "ar")}>{t.switchLang}</button>
+          <input
+            type="text"
+            placeholder={t.search}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+  
+          {filtered.map((item, index) => (
+            <div key={index} className="card">
+              <h2>{t.year}: {item.year}</h2>
+              <p>{t.cases}: {item.cases}M</p>
+              <p>{t.severe}: {item.severe}M</p>
+              <p>{t.deaths}: {item.deaths}M</p> {/* ✅ 4. عرض الوفيات */}
+            </div>
+          ))}
+  
+          {filtered.length === 0 && <p>{t.noResult}</p>}
+  
+          <button onClick={exportPDF}>{t.export}</button>
+          <canvas id="myChart" height="200"></canvas>
+        </div>
+      );
+    }
+  
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+
+  <div class="link-wrapper">
+    <a class="stats-link" href="index.html">
+      اضغط هنا للانتقال إلى صفحة البداية 
+    </a>
+   </div>
+
+     <div class="serdah2">
+         <a class="stats-link" href="index.html">
+      <span class="icon">🔙</span> رجوع للصفحة الأساسية
+         </a>
+     </div>
+</body>
+</html>
